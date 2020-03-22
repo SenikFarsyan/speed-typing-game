@@ -9,7 +9,7 @@ describe('userReducer', () => {
     expect(userReducer(undefined, {})).toEqual({
       currentUser: null,
       users: null,
-      error: null
+      messages: {}
     });
   });
   it('should return users object', () => {
