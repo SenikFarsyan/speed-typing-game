@@ -9,7 +9,7 @@ import { registerUser, signinUser } from '../../redux/user/user.actions';
 import { selectMessages } from '../../redux/user/user.selectors';
 
 //styles
-import './sign-in-and-sign-up.styles.css';
+import classes from './sign-in-and-sign-up.module.css';
 
 const SignInAndSignUpPage = ({ signinUser, registerUser, messages }) => {
   const name = useFormInput('');
@@ -29,12 +29,12 @@ const SignInAndSignUpPage = ({ signinUser, registerUser, messages }) => {
     }
   };
   return (
-    <div className='sign-in-and-sign-up'>
+    <div className={classes.signinAndSignup}>
       <h3>Sign in and Sign up page</h3>
-      <form className='form'>
+      <form className={classes.form}>
         <input type='text' required placeholder='name' {...name} />
         <input type='password' required placeholder='password' {...password} />
-        <div className='buttons-container'>
+        <div>
           <input
             type='button'
             name='register'
@@ -50,7 +50,9 @@ const SignInAndSignUpPage = ({ signinUser, registerUser, messages }) => {
         </div>
       </form>
       <div
-        className={`${messages.error ? 'error-message' : 'success-message'} `}
+        className={`${
+          messages.error ? classes.errorMessage : classes.successMessage
+        } `}
       >
         <p>{messages.error}</p>
         <p>{messages.success}</p>

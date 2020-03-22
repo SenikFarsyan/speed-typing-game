@@ -1,12 +1,12 @@
 import React from 'react';
 
 //styles
-import './preview.styles.css';
+import classes from './preview.module.css';
 
 const TextSample = ({ text, userInput }) => {
   const sample = text.split('');
   return (
-    <div className='text-sample'>
+    <div className={classes.textSample}>
       {sample.map((s, i) => {
         let color;
         if (i < userInput.length) {

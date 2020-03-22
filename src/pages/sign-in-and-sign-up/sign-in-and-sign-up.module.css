@@ -1,4 +1,4 @@
-.sign-in-and-sign-up {
+.signinAndSignup {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,9 +21,9 @@
   cursor: pointer;
   border-radius: 5px;
 }
-.error-message {
+.errorMessage {
   color: red;
 }
-.success-message {
+.successMessage {
   color: green;
 }

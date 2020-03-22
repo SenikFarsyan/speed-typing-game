@@ -10,7 +10,7 @@ import Speed from '../../components/speed/speed.component';
 import HighScores from '../../components/sideBar/sideBar.component';
 
 //styles
-import './homepage.styles.css';
+import classes from './homepage.module.css';
 //icons
 import Spinner from '../../assets/loader.gif';
 
@@ -111,15 +111,17 @@ class HomePage extends React.PureComponent {
     const { text, userInput, wpm, finished, error } = this.state;
 
     return text ? (
-      <div className='home-container'>
+      <div className={classes.homeContainer}>
         <HighScores />
-        <div className='game-container'>
+        <div className={classes.gameContainer}>
           <h3>Start typing and the game will begin!</h3>
           <TextSample text={text} userInput={userInput} />
           <textarea
             cols='30'
             rows='5'
-            className={`user-input ${error ? 'wrong-letter' : ''}`}
+            className={`${classes.userInput} ${
+              error ? classes.wrongLetter : ''
+            }`}
             value={userInput}
             onChange={this.handleInputChange}
             placeholder='Start typing here...'
@@ -127,20 +129,20 @@ class HomePage extends React.PureComponent {
           ></textarea>
           <Speed wpm={wpm} />
           {finished && (
-            <div className='finish-game'>
+            <div>
               <p>Game was finished, your score is {wpm} wpm</p>
             </div>
           )}
 
-          <div className='text-right'>
-            <button className='button' onClick={this.onRestart}>
+          <div>
+            <button className={classes.button} onClick={this.onRestart}>
               Restart
             </button>
           </div>
         </div>
       </div>
     ) : (
-      <div className='loader'>
+      <div className={classes.loader}>
         <img src={Spinner} alt='loader' />
       </div>
     );

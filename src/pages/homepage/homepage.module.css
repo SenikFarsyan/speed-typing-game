@@ -1,20 +1,20 @@
-.home-container {
+.homeContainer {
   display: flex;
   flex-wrap: wrap;
   width: 90vw;
   margin: 0 auto;
 }
 
-.game-container {
+.gameContainer {
   text-align: center;
   flex: 1;
 }
 
-.user-input {
+.userInput {
   padding: 10px;
   margin: 15px;
 }
-.wrong-letter {
+.wrongLetter {
   background-color: red;
 }
 .loader {
@@ -27,4 +27,11 @@
 }
 .loader img {
   max-width: 75px;
+}
+.button {
+  padding: 10px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }

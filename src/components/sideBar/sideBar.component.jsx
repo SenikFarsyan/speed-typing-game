@@ -7,15 +7,15 @@ import moment from 'moment';
 import { selectUsersScores } from '../../redux/user/user.selectors';
 
 //styles
-import './sidebar.styles.css';
+import classes from './sidebar.module.css';
 
 const HighScores = ({ usersScores }) => {
   if (usersScores) {
     return (
-      <div className='scores-container'>
+      <div>
         <h3>Top 5 high scores</h3>
 
-        <ol className='scores-list'>
+        <ol className={classes.scoresList}>
           {usersScores
             .sort((a, b) => {
               return b.score - a.score;
@@ -23,7 +23,7 @@ const HighScores = ({ usersScores }) => {
             .slice(0, 5)
             .map(user => {
               return (
-                <li key={user.date} className='score'>
+                <li key={user.date}>
                   <span>{user.name}</span>
                   <span>{user.score} wpm</span>
                   <span>

@@ -7,13 +7,13 @@ import moment from 'moment';
 import { selectUserHistory } from '../../redux/user/user.selectors';
 
 //styles
-import './history.styles.css';
+import classes from './history.module.css';
 
 const GameHistory = ({ userHistory }) => {
   return userHistory.length > 1 ? (
-    <div className='container'>
+    <div className={classes.container}>
       <h3>Here are your scores</h3>
-      <ol className='history-list'>
+      <ol className={classes.historyList}>
         {userHistory
           .sort((a, b) => b.score - a.score)
           .map(game => (
@@ -25,7 +25,7 @@ const GameHistory = ({ userHistory }) => {
       </ol>
     </div>
   ) : (
-    <div className='container'>
+    <div className={classes.container}>
       <p>You have not played yet</p>
     </div>
   );

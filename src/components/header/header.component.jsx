@@ -13,26 +13,26 @@ import { signOut } from '../../redux/user/user.actions';
 import { ReactComponent as Logo } from '../../assets/WPM.svg';
 
 //styles
-import './header.styles.css';
+import classes from './header.module.css';
 
 const Header = ({ currentUser, signOut }) => {
   return (
-    <div className='header-container'>
-      <Link className='logo-container' to='/'>
-        <Logo className='logo' />
+    <div className={classes.headerContainer}>
+      <Link className={classes.logoContainer} to='/'>
+        <Logo />
       </Link>
-      <div className='options-container'>
+      <div className={classes.optionsContainer}>
         {currentUser ? (
           <React.Fragment>
-            <Link className='option-link' to='/history'>
+            <Link className={classes.optionLink} to='/history'>
               History
             </Link>
-            <div className='option-link' onClick={signOut}>
+            <div className={classes.optionLink} onClick={signOut}>
               Sign Out
             </div>
           </React.Fragment>
         ) : (
-          <Link className='option-link' to='signin'>
+          <Link className={classes.optionLink} to='signin'>
             SIGN IN
           </Link>
         )}
