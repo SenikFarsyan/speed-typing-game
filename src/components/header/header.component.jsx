@@ -32,9 +32,9 @@ const Header = ({ currentUser, signOut }) => {
             </div>
           </React.Fragment>
         ) : (
-          <div className='option-link' to='signin'>
+          <Link className='option-link' to='signin'>
             SIGN IN
-          </div>
+          </Link>
         )}
       </div>
     </div>
