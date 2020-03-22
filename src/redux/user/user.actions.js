@@ -21,6 +21,12 @@ export const registerUser = newUser => {
   return (dispatch, getState) => {
     const state = getState();
     let err = '';
+    if (!state.user.users) {
+      return dispatch({
+        type: UserActionTypes.SIGN_IN_FAILURE,
+        error: 'Something went wrong try again later'
+      });
+    }
     state.user.users.forEach(user => {
       if (user.name === newUser.name) {
         err = 'The name is already in use!';
@@ -87,6 +93,12 @@ export const signinUser = user => {
   return (dispatch, getState) => {
     const state = getState();
     let userData = null;
+    if (!state.user.users) {
+      return dispatch({
+        type: UserActionTypes.SIGN_IN_FAILURE,
+        error: 'Something went wrong try again later'
+      });
+    }
     state.user.users.forEach(_user => {
       if (_user.name === user.name && _user.password === user.password) {
         userData = _user;
