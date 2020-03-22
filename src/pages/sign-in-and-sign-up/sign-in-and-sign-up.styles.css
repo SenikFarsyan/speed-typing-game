@@ -1,0 +1,30 @@
+.sign-in-and-sign-up {
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form input {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  outline: none;
+}
+.form input[type='button'] {
+  cursor: pointer;
+  border-radius: 5px;
+}
+.error-message {
+  color: red;
+}
+.success-message {
+  color: green;
+}

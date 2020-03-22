@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-function App() {
+//actions
+import { getAllUsers, checUserSession } from './redux/user/user.actions';
+
+//selectors
+import { selectCurrentUser } from './redux/user/user.selectors';
+
+//components
+import Header from './components/header/header.component';
+
+//pages
+import HomePage from './pages/homepage/homepage.component';
+import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import GameHistory from './pages/history/history.component';
+
+function App({ getAllUsers, currentUser, checUserSession }) {
+  useEffect(() => {
+    getAllUsers();
+    checUserSession();
+  }, [checUserSession, getAllUsers]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Switch>
+        <Route
+          exact
+          path='/'
+          render={() =>
+            !currentUser ? <Redirect to='/signin' /> : <HomePage />
+          }
+        />
+        <Route
+          path='/signin'
+          render={() =>
+            currentUser ? <Redirect to='/' /> : <SignInAndSignUpPage />
+          }
+        />
+        <Route
+          path='/history'
+          render={() =>
+            !currentUser ? <Redirect to='/signin' /> : <GameHistory />
+          }
+        />
+      </Switch>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+
+const mapDispatchToProps = { getAllUsers, checUserSession };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
